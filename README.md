@@ -102,19 +102,19 @@ As a user, I want to insert an audio file in addition text file.
 
 ### Title
 
-**Correcting Text**
+**Changing Language**
 
 ### User Story sentence
 
-As a user, I want to detect the text if it have any mistakes.
+As a user, I want to change the translation into another language.
 
 ### Feature Tasks
 
-- Mistake detector that suggest the correction.
+- Option to select different language after translation.
 
 ### Acceptance Tests
 
-- Ensure that correction text not equal to input text
+- Ensure that the option appear after translation.
 
 ---
 
