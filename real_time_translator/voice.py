@@ -6,7 +6,6 @@ r = sr.Recognizer()
 
 
 def transcript_from_file(file:str)->str:
-    
     with sr.AudioFile(file) as source:
       # listen for the data (load audio to memory)
       audio_data = r.record(source)
@@ -29,16 +28,9 @@ def transcript_from_record():
 
   return(text)
   
-
-
-
-
-  
-
-
-if __name__ == '__main__':
-  file='source/audio_files_harvard.wav'
-  transcript_from_record()
+# if __name__ == '__main__':
+#   file='source/audio_files_harvard.wav'
+#   print(transcript_from_record())
 
 
 
