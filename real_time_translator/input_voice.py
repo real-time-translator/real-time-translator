@@ -14,8 +14,6 @@ def transcript_from_file(file:str)->str:
       
     return(text)
 
-
-
 def transcript_from_record():
   print("start talking ")
   # listen for the mice 
@@ -28,9 +26,9 @@ def transcript_from_record():
 
   return(text)
   
-# if __name__ == '__main__':
-#   file='source/audio_files_harvard.wav'
-#   print(transcript_from_record())
+if __name__ == '__main__':
+  file='source/audio_files_harvard.wav'
+  print(transcript_from_file('source/test_file.wav'))
 
 
 
