@@ -20,40 +20,42 @@ Why should we care about your product?
 
 ### IN - What will your product do
 
-* The app will translate from all to all languages in the world.
-* The app will accept different files format, like txt, mp3, jpeg ...etc.
-* The app can extract the text from different files.
-* The app offers auto corrector for the text.
+- The app will translate from all to all languages in the world.
+- The app will accept different files format, like txt, mp3, jpeg ...etc.
+- The app can extract the text from different files.
+- The app offers auto corrector for the text.
 
 ### OUT - What will your product not do
 
-* The app will not detect the language, you should select by yourself.
+- The app will not detect the language, you should select by yourself.
 
 ### Minimum Viable Product
 
-* Text with one language
+- Text with one language
 
 ### Stretch Goals
 
-* Translate from video file.
-* Detect the language without selction.
-* Detect text from live cam.
-* Insert a file with many languages and translate it to one.
-* Hosting to web server
+- Text mistake corrector.
+- Audio file output.
+- Detect the language without selection.
+- Translate from video file.
+- Detect text from live cam.
+- Insert a file with many languages and translate it to one.
+- Hosting to web server.
 
 &nbsp;
 
 ## Functional Requirements
 
-* The user can speak to the app using his microphone in any language, so the user will get his (speech, words or sentences) translated into any language selected.
+- The user can speak to the app using his microphone in any language, so the user will get his (speech, words or sentences) translated into any language selected.
 
-* The user can write any text manually in any language so the user will get his text  translated into any language. 
+- The user can write any text manually in any language so the user will get his text translated into any language.
 
-* The user can upload any file he wants (Audio , text file , image) in any language the user wants so the user will get his uploaded file translated into any language he wants.
+- The user can upload any file he wants (Audio , text file , image) in any language the user wants so the user will get his uploaded file translated into any language he wants.
 
 ### Data Flow
 
-* The user chooses one of the options, either write, speak, insert a file, then the text will be displayed, the user has the ability to edit the text and text correct suggestion is working. The user clicks on "Translate" button and the translated text will be displayed.
+- The user chooses one of the options, either write, speak, insert a file, then the text will be displayed, the user has the ability to edit the text and text correct suggestion is working. The user clicks on "Translate" button and the translated text will be displayed.
 
 &nbsp;
 
