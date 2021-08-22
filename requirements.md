@@ -36,11 +36,12 @@ Why should we care about your product?
 ### Stretch Goals
 
 - Text mistake corrector.
-- Translate from video file.
+- Audio file output.
 - Detect the language without selection.
+- Translate from video file.
 - Detect text from live cam.
 - Insert a file with many languages and translate it to one.
-- Hosting to web server
+- Hosting to web server.
 
 &nbsp;
 
