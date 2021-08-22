@@ -1,15 +1,13 @@
 # import the following libraries
 # will convert the image to text string
 # import googletrans
-import re
 import googletrans
 import pytesseract      
   
 # adds image processing capabilities
 from PIL import Image   
 
-def imagetotext():
-    imageFileName = input("enter the name of the image file: ")
+def imagetotext(imageFileName):
         
     # opening an image from the source path
     img = Image.open(imageFileName)     
@@ -40,4 +38,6 @@ def imagetotext():
     return results.text
 
 if __name__ == "__main__":
-    print(imagetotext())
+    imageFileName = input("enter the name of the image file: ")
+
+    print(imagetotext(imageFileName))
