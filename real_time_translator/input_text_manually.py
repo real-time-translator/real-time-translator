@@ -13,6 +13,10 @@ if __name__ == '__main__':
     input_text_manually()
     print(input_text_file())
 
+from pyautogui import typewrite
 
-  
+print("enter folder name: ")
+typewrite("Default Value")
+folder = input()
+print (folder) 
  
