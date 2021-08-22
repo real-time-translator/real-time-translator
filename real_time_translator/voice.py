@@ -6,7 +6,7 @@ r = sr.Recognizer()
 
 
 def transcript_from_file(file:str)->str:
-    # select the language you want to translate to 
+    
     with sr.AudioFile(file) as source:
       # listen for the data (load audio to memory)
       audio_data = r.record(source)
@@ -19,14 +19,17 @@ def transcript_from_file(file:str)->str:
 
 def transcript_from_record():
   print("start talking ")
-
+  # listen for the mice 
   s = am.Record(10) 
+  # load audio to file
   s.Write('source/file.wav')
   file='source/file.wav'
+  # Transcript form the File
   text=transcript_from_file(file)
-  print(text)
+
+  return(text)
   
-  # translate_from_file(file,'ar')
+
 
 
 
