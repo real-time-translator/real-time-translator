@@ -1,7 +1,5 @@
 # import the following libraries
 # will convert the image to text string
-# import googletrans
-import googletrans
 import pytesseract      
   
 # adds image processing capabilities
@@ -22,20 +20,7 @@ def imagetotext(imageFileName):
     with open('abc.txt',mode ='w') as file:     
         
                     file.write(result)
-                    print(result)
-
-    # print(googletrans.LANGUAGES)
-
-    # Initial
-    translator = googletrans.Translator()
-
-    # Basic Translate
-    results = translator.translate(result,dest="ar")
-
-    with open('abc.txt',mode ='w') as file:     
-        
-                    x=file.write(results.text)
-    return results.text
+    return result
 
 if __name__ == "__main__":
     imageFileName = input("enter the name of the image file: ")
