@@ -43,7 +43,6 @@ def uploadFiles():
     Label(root, text='File Uploaded Successfully!', foreground='green').place(x=250,y = 120)
         
     
-    
 adharbtn = Button(
     root, 
     text ='Choose a picture', 
