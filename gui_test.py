@@ -18,7 +18,7 @@ img = PhotoImage(file="images/dictionary3.png")
 label=Label(root, image=img)
 label.place(x=0, y=0)
 ###input field
-entry = Entry(root, width=50, borderwidth=5)
+entry = Entry(root, width=50, borderwidth=5,  font=("Arial", 15))
 entry.insert(0,"Enter your name:")
 
 
@@ -28,15 +28,15 @@ def myClick():
     myLabel1 = Label(root, text= outPut)
     myLabel1.grid()
 
-my_label = Label(root, text="Helloooo this is NURA Testing ")
-myButton = Button(root, text="click me!" ,command=myClick , fg="blue" , bg="black")
-button_quit = Button(root, text="quit" , command= root.quit)
+my_label = Label(root, text="Helloooo this is NURA Testing ",  font=("Arial", 15))
+myButton = Button(root, text="click me!" ,command=myClick , fg="yellow" , bg="black" , font=("Arial", 15))
+button_quit = Button(root, text="quit" , command= root.quit ,  font=("Arial", 15))
 
 #put it on the screen
-my_label.grid(row=4 , column= 2)
+my_label.grid(row=4 , column= 2, pady=20)
 entry.grid(row=3 , column= 2)
 myButton.grid(row=5 , column= 2)
-button_quit.grid(row=6 , column= 2)
+button_quit.grid(row=6 , column= 2, pady=20)
 
 #mainloop
 root.mainloop()
