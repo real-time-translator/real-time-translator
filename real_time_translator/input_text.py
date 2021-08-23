@@ -4,6 +4,7 @@ def input_text_manually():
 
 def input_text_file(path):
     user_input_text = open(path , 'r')
+    print(user_input_text.read())
     return user_input_text.read()
 
 if __name__ == '__main__':
