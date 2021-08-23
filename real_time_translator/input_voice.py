@@ -2,10 +2,16 @@ from typing import Text
 import speech_recognition as sr
 import audiomath as am
 import ffmpeg
+import subprocess
 r = sr.Recognizer()
 
 
 def transcript_from_file(file:str)->str:
+    if file.endswith('.mp3'):
+
+      subprocess.call(['ffmpeg', '-i', file,
+                 'assets/voices/file_converted.wav'])
+
     with sr.AudioFile(file) as source:
       # listen for the data (load audio to memory)
       audio_data = r.record(source)
@@ -27,8 +33,8 @@ def transcript_from_record():
   
 if __name__ == '__main__':
   file='source/audio_files_harvard.wav'
-  # print(transcript_from_file('assets/voices/test_file.wav'))
-  print(transcript_from_record())
+  print(transcript_from_file('assets/voices/How to Give Welcome Remarks.mp3'))
+  # print(transcript_from_record())
 
 
 
