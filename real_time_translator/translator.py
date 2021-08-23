@@ -1,12 +1,12 @@
 import googletrans
 
 
-def translat_str(snetence):
+def translat_str(snetence,to_lang):
 
     # Initial
     translator = googletrans.Translator()
     # Basic Translate
-    translation = translator.translate( snetence, dest="ar")
+    translation = translator.translate( snetence, dest=to_lang)
     translated=f"{translation.origin} ({translation.src}) --> {translation.text} ({translation.dest})"
     print(translated)
 
@@ -18,5 +18,5 @@ def translat_str(snetence):
 if __name__ == "__main__":
   
 
-    # print(translat_str())
+    print(translat_str("تفاحة",'en').lower())
     pass
