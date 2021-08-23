@@ -13,14 +13,24 @@ class Page(tk.Frame):
     def show(self):
         self.lift()
 
+
 class Page1(Page):
-   def __init__(self, *args, **kwargs):
+    def __init__(self, *args, **kwargs):
+       extracted_text=''
        Page.__init__(self, *args, **kwargs)
        label = tk.Label(self, text="This is page 1")
-       label.pack(side="top", fill="both", expand=True)
-       button_record=tk.Button(self,text="Start Recording",command=transcript_from_record)
+       label.grid(row=12,column=12)
+       button_record=tk.Button(self,text="Start Recording",command=self.handle_call)
        button_record.grid(row=1,column=1)
-    
+       label = tk.Label(self, text=extracted_text)
+       label.grid(row=9,column=9)
+     
+   
+    def handle_call(self):
+       self.extracted_text=transcript_from_record()
+       self.show()
+      
+  
 
 class Page2(Page):
    def __init__(self, *args, **kwargs):

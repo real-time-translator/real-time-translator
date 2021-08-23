@@ -5,6 +5,7 @@ from real_time_translator.edit_text import edit_text
 
 
 def play(choice):
+    
     #Render Main Page
 
     if choice == 'Translate by Text':

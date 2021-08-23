@@ -11,24 +11,24 @@ def transcript_from_file(file:str)->str:
       audio_data = r.record(source)
       # recognize (convert from speech to text)
       text = r.recognize_google(audio_data)
-      
     return(text)
 
 def transcript_from_record():
   print("start talking ")
   # listen for the mice 
-  s = am.Record(10) 
+  s = am.Record(3) 
   # load audio to file
-  s.Write('source/file.wav')
-  file='source/file.wav'
+  s.Write('assets/voices/file.wav')
+  file='assets/voices/file.wav'
   # Transcript form the File
   text=transcript_from_file(file)
-
+  print(text)
   return(text)
   
 if __name__ == '__main__':
   file='source/audio_files_harvard.wav'
-  print(transcript_from_file('source/test_file.wav'))
+  # print(transcript_from_file('assets/voices/test_file.wav'))
+  print(transcript_from_record())
 
 
 
