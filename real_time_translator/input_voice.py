@@ -3,14 +3,19 @@ import speech_recognition as sr
 import audiomath as am
 import ffmpeg
 import subprocess
+import os
 r = sr.Recognizer()
 
 
 def transcript_from_file(file:str)->str:
-    if file.endswith('.mp3'):
 
+    # convert the mp3 file to wav 
+    if file.endswith('.mp3'):
+      os.remove('assets/voices/file_converted.wav')
       subprocess.call(['ffmpeg', '-i', file,
                  'assets/voices/file_converted.wav'])
+      #save Audio  in file 
+      file='assets/voices/file_converted.wav'
 
     with sr.AudioFile(file) as source:
       # listen for the data (load audio to memory)
@@ -20,6 +25,7 @@ def transcript_from_file(file:str)->str:
     return(text)
 
 def transcript_from_record():
+  
   print("start talking ")
   # listen for the mice 
   s = am.Record(3) 
