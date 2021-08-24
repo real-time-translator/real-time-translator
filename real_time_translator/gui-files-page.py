@@ -83,14 +83,23 @@ def ask_for_edit():
     global extracted_text
     box=Entry(textvariable=extracted_text)
     box.insert(END,extracted_text)
-    box.place(x=300,y = 200 ,height = 75,width = 450)
+    box.place(x=300,y = 160 ,height = 75,width = 450)
     submit_button=Button(root,text="Submit ",command=ask_for_submit)
     submit_button.place(x = 800, y= 190 )
     # submit_button=Button(text=" Submit ",command=handle_submiting)
     # submit_button.place(x=20,y=150)
 
 def ask_for_submit():
-    print('submit')
+    # pass
+    global extracted_text
+    
+    print(extracted_text)
+    
+    label  = Label( text=extracted_text)
+    label.place(x=300,y = 160 ,height = 75,width = 450)
+    label .destroy()
+    submit_button.destroy()
+    box.destroy()
 
 
 #         Input_text = Entry(root)
