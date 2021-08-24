@@ -9,7 +9,7 @@ from translator import translat_str
 from input_text import input_text_file
 from input_image import imagetotext
 from input_voice import transcript_from_file
-
+from translate import Translator
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
@@ -24,16 +24,133 @@ class Page3(Page):
         self.extracted_text=None
         self.user_input = StringVar()
         self.edit_box=Entry(self,textvariable=self.user_input)
-        self.submit_button=Button(self,text="Submit ",command=self.ask_for_submit)
+
+        self.choices = {  'Afrikaans',
+                        'Albanian',
+                        'Arabic',
+                        'English',
+                        'Armenian',
+                       ' Azerbaijani',
+                        'Basque',
+                        'Belarusian',
+                        'Bengali',
+                        'Bosnian',
+                        'Bulgarian',
+                       ' Catalan',
+                        'Cebuano',
+                        'Chichewa',
+                        'Chinese',
+                        'Corsican',
+                        'Croatian',
+                       ' Czech',
+                        'Danish',
+                        'Dutch', 
+                        'Esperanto',
+                        'Estonian',
+                        'Filipino',
+                        'Finnish',
+                        'French',
+                        'Frisian',
+                        'Galician',
+                        'Georgian',
+                        'German',
+                        'Greek',
+                        'Gujarati',
+                        # 'Haitian Creole',
+                        # 'Hausa',
+                        # 'Hawaiian',
+                        # 'Hebrew',
+                        # 'Hindi',
+                        # 'Hmong',
+                        # 'Hungarian',
+                        # 'Icelandic',
+                        # 'Igbo',
+                        # 'Indonesian',
+                        # 'Irish',
+                        # 'Italian',
+                        # 'Japanese',
+                        # 'Javanese',
+                        # 'Kannada',
+                        # 'Kazakh',
+                        # 'Khmer',
+                        # 'Kinyarwanda',
+                        # 'Korean',
+                        # 'Kurdish',
+                        # 'Kyrgyz',
+                        # 'Lao',
+                        # 'Latin',
+                        # 'Latvian',
+                        # 'Lithuanian',
+                        # 'Luxembourgish',
+                        # 'Macedonian',
+                        # 'Malagasy',
+                        # 'Malay',
+                        # 'Malayalam',
+                        # 'Maltese',
+                        # 'Maori',
+                        # 'Marathi',
+                        # 'Mongolian',
+                        # 'Myanmar',
+                        # 'Nepali',
+                        # 'Norwegian'
+                        # 'Odia',
+                        # 'Pashto',
+                        # 'Persian',
+                        # 'Polish',
+                        # 'Portuguese',
+                        # 'Punjabi',
+                        # 'Romanian',
+                        # 'Russian',
+                        # 'Samoan',
+                        # 'Scots Gaelic',
+                        # 'Serbian',
+                        # 'Sesotho',
+                        # 'Shona',
+                        # 'Sindhi',
+                        # 'Sinhala',
+                        # 'Slovak',
+                        # 'Slovenian',
+                        # 'Somali',
+                        # 'Spanish',
+                        # 'Sundanese',
+                        # 'Swahili',
+                        # 'Swedish',
+                        # 'Tajik',
+                        # 'Tamil',
+                        # 'Tatar',
+                        # 'Telugu',
+                        # 'Thai',
+                        # 'Turkish',
+                        # 'Turkmen',
+                        # 'Ukrainian',
+                        # 'Urdu',
+                        # 'Uyghur',
+                        # 'Uzbek',
+                        # 'Vietnamese',
+                        # 'Welsh',
+                        # 'Xhosa'
+                        # 'Yiddish',
+                        # 'Yoruba',
+                        'Zulu',}
+
+        self.lan1 = StringVar()
+        self.lan2 = StringVar()
+        self.lan1.set('English')
+        self.lan2.set('Arabic')
+        self.lan1menu = OptionMenu(self, self.lan1, *self.choices)
+        self.label_lan1= tk.Label(self,text="Select a language").grid(row = 0, column = 1)
+        self.lan1menu.grid(row = 1, column =1)
+        self.lan2menu = OptionMenu( self, self.lan2, *self.choices)
+        self.label_lan2= tk.Label(self,text="Select a language").grid(row = 0, column = 2)
+        self.lan2menu.grid(row = 1, column =2)
+        self.submit_button = Button(self,text="Submit ",command=self.ask_for_submit)
         self.edit_btn = tk.Button(self, text = 'Edit',command = self.ask_for_edit)
         self.show_label = Label(self,text=self.extracted_text)
-
+        self.label_translated = tk.Label(self)
         self.image_btn = tk.Button(self,text ='Choose a picture',command = lambda:self.ask_for_image()) 
         self.image_btn.place(x=250,y = 120)
-
         self.text_btn = tk.Button(self,text ='Choose a text ',command = lambda:self.ask_for_text()) 
         self.text_btn.place(x=450,y = 120)
-
         self.audio_btn = tk.Button(self,text ='Choose an audio',command = lambda:self.ask_for_audio()) 
         self.audio_btn.place(x=650,y = 120)
 
@@ -68,10 +185,10 @@ class Page3(Page):
         self.edit_btn.place(x = 800, y= 190 )
         self.trans_btn = tk.Button(self, text = 'Translate',command = self.translate)
         self.trans_btn.place(x = 450, y= 250 )
-
         self.show_label = Label(self,text=self.extracted_text)
         self.show_label.place(x=300,y = 200 ,height = 20,width = 450)
         print(self.extracted_text)
+
 
     def ask_for_edit(self):
         self.image_btn.destroy()
@@ -81,6 +198,8 @@ class Page3(Page):
         self.show_label.destroy()
         self.edit_box.destroy()
         self.submit_button.destroy()
+        self.trans_btn.destroy()
+        self.label_translated.destroy()
 
         self.submit_button=Button(self,text="Submit ",command=self.ask_for_submit)
         self.submit_button.place(x = 800, y= 190 )
@@ -106,14 +225,17 @@ class Page3(Page):
         self.text_btn.place(x=450,y = 120)
         self.audio_btn = tk.Button(self,text ='Choose an audio',command = lambda:self.ask_for_audio()) 
         self.audio_btn.place(x=650,y = 120)
+        self.trans_btn = tk.Button(self, text = 'Translate',command = self.translate)
+        self.trans_btn.place(x = 450, y= 250 )
+        self.label_translated = Label(self,text=self.translation)
+        self.label_translated.place(x=300,y = 300, height = 75,width = 450)
 
     def translate(self):
-        translated_text = translat_str(self.extracted_text)
-        print(translated_text)
-        label_translated = Label(self,text=translated_text)
-        label_translated.place(x=300,y = 300, height = 75,width = 450)
-
-
+        translator = Translator( from_lang=self.lan1.get(),to_lang=self.lan2.get())
+        self.translation = translator.translate(self.extracted_text)
+        print(self.translation)
+        self.label_translated = Label(self,text=self.translation)
+        self.label_translated.place(x=300,y = 300, height = 75,width = 450)
 
 
 # if __name__ == "__main__":
