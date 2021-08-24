@@ -8,13 +8,14 @@ authors = ["Yahia Qous <yahiaqous@gmail.com>"]
 python = "^3.9"
 pytesseract = "^0.3.8"
 pyttsx3 = "^2.90"
-googletrans = "^3.0.0"
+googletrans = "3.1.0a0"
 Pillow = "^8.3.1"
 opencv-python = "^4.5.3"
 audiomath = "^1.15.4"
 SpeechRecognition = "^3.8.1"
 translate = "^3.6.1"
 ffmpeg-python = "^0.2.0"
+ibm-watson = "^5.2.2"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"
