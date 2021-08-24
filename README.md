@@ -26,7 +26,7 @@ Real-Time Translator detects the text, then translates it into the language of y
 
 ## Wireframes
 
-![Wireframe](images/Real-Time-Translator-Wireframe.jpg)
+![Wireframe](assets/images/Real-Time-Translator-Wireframe.jpg)
 
 &nbsp;
 
@@ -140,4 +140,4 @@ As a user, I want to translate the text in the image I insert.
 
 ## Domain Modeling
 
-![Domain](images/Real-Time-Translator-Domain.jpg)
+![Domain](assets/images/Real-Time-Translator-Domain.jpg)
