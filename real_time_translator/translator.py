@@ -8,8 +8,8 @@ def translat_str(snetence,to_lang="ar"):
     # Basic Translate
     translation = translator.translate( snetence, dest=to_lang)
     translated=f"{translation.origin} ({translation.src}) --> {translation.text} ({translation.dest})"
-    print(translated)
-
+    
+    # print(translated)
     # with open('abc.txt',mode ='w') as file:     
     #         file.write(translated)
 
