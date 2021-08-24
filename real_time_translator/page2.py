@@ -8,10 +8,15 @@ class Page(tk.Frame):
 
 class Page2(Page):
    def __init__(self, *args, **kwargs):
-       Page.__init__(self, *args, **kwargs)
-       label = tk.Label(self, text="This is page 2")
-       label.pack(side="top", fill="both", expand=True)
-       
+        Page.__init__(self, *args, **kwargs)
+        logo = tk.PhotoImage(file="assets/images/dictionary2.2.png")
+        BGlabel = tk.Label(self,image=logo)
+        BGlabel.image = logo
+        BGlabel.place(x=0,y=0,width=1000,height=714)
+
+        label = tk.Label(BGlabel, text="This is page 2")
+        label.place(x=20, y=20)
+        
 
 # if __name__ == "__main__":
 #     root= tk.Tk()

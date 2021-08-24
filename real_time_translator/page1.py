@@ -8,16 +8,19 @@ class Page(tk.Frame):
 
 class Page1(Page):
     def __init__(self, *args, **kwargs):
-       Page.__init__(self, *args, **kwargs)
-      
-       self.extracted_text=None
-       self.edit_text=None
+        Page.__init__(self, *args, **kwargs)
+        logo = tk.PhotoImage(file="assets/images/dictionary2.2.png")
+        BGlabel = tk.Label(self,image=logo)
+        BGlabel.image = logo
+        BGlabel.place(x=0,y=0,width=1000,height=714)
+        self.extracted_text=None
+        self.edit_text=None
 
-       label = tk.Label(self, text="This is page 1")
-       label.grid(row=12,column=12)
+        label = tk.Label(BGlabel, text="This is page 1")
+        label.grid(row=12,column=12)
 
-       self.button_record=tk.Button(self,text="Start Recording",command=self.handle_record)
-       self.button_record.place(x=130,y=30)
+        self.button_record=tk.Button(BGlabel,text="Start Recording",command=self.handle_record)
+        self.button_record.place(x=130,y=30)
 
 
     def handle_record(self):
