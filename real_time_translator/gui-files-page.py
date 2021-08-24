@@ -40,7 +40,7 @@ def ask_for_text():
                ('text files', '.txt'),
               ])
     extracted_text = input_text_file(file_path.name)
-    # print (extracted_text)
+    print (extracted_text)
     show_answer(extracted_text)
 
 def ask_for_audio():
@@ -54,8 +54,10 @@ def ask_for_audio():
 
 
 def show_answer(extracted_text):
-    Input_text.insert(extracted_text)
-    Entry(root,  text = "%s" %(Input_text) ).place(x=300,y = 160)
+    print(extracted_text)
+    text=Entry(root,  text = "%s" %(Input_text) )
+    text.place(x=300,y = 160)
+    text.insert(END,extracted_text)
 
 adharbtn = Button(root,text ='Choose a picture',command = lambda:ask_for_image()) 
 adharbtn.place(x=250,y = 120)
@@ -77,8 +79,8 @@ Input_text.place(x=300,y = 160)
 trans_btn = Button(root, text = 'Translate',command = translate )
 trans_btn.place(x = 450, y= 250 )
 
-Input_text = Text(root, height = 5, wrap = WORD, padx=5, pady=5, width = 60)
-Input_text.place(x=300,y = 300)
+# Input_text = Text(root, height = 5, wrap = WORD, padx=5, pady=5, width = 60)
+# Input_text.place(x=300,y = 300)
 
 
 root.mainloop()

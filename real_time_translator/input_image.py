@@ -19,7 +19,7 @@ def imagetotext(imageFileName):
     # write text in a text file and save it to source path
     # with open('abc.txt',mode ='w') as file:
     #     file.write(result)
-    return result
+    return str(result)
 
 if __name__ == "__main__":
     imageFileName = input("enter the name of the image file: ")
