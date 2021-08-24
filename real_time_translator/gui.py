@@ -1,67 +1,43 @@
-from input_text import input_text_manually, input_text_file
-from input_image import imagetotext
-from input_voice import transcript_from_file, transcript_from_record
-from edit_text import edit_text
 import tkinter as tk
-class Page(tk.Frame):
-    def __init__(self, *args, **kwargs):
-        tk.Frame.__init__(self, *args, **kwargs)
-    def show(self):
-        self.lift()
 
-class Page1(Page):
-   def __init__(self, *args, **kwargs):
-       Page.__init__(self, *args, **kwargs)
-       label = tk.Label(self, text="This is page 1")
-       label.pack(side="top", fill="both", expand=True)
-       button_record=tk.Button(self,text="Start Recording",command=transcript_from_record)
-       button_record.grid(row=1,column=1)
+root = tk.Tk()
 
 
-class Page2(Page):
-   def __init__(self, *args, **kwargs):
-       Page.__init__(self, *args, **kwargs)
-       label = tk.Label(self, text="This is page 2")
-       label.pack(side="top", fill="both", expand=True)
+
+def page1(root):
+    
+    page = tk.Frame(root)
+    page.grid()
+    # tk.Label(page, text = 'This is the main page').grid(row = 0)
+    label=tk.Label(root,text="").grid(row=1,column=1)
+    label1=tk.Label(root,text="").grid(row=2,column=1)
+    label2=tk.Label(root,text="").grid(row=3,column=1)
+    label3=tk.Label(root,text="").grid(row=4,column=1)
+    tk.Button(page, text = 'Translte By Voice', command = lambda: changepage_page1(), fg="white",bg="black",font=("Arial", 15)).grid(row = 4,column=2, ipadx=20, ipady=20)
+    tk.Button(page, text = 'Translate By Text', command = lambda: changepage_page2(),fg="white",bg="black",font=("Arial", 15)).grid(row = 4,column=3, ipadx=20, ipady=20)
+    tk.Button(page, text = 'Translate By File', command = lambda: changepage_page3(),fg="white",bg="black",font=("Arial", 15)).grid(row = 4,column=4, ipadx=20, ipady=20)
+    
+def changepage_page1():
+        root.withdraw()
+        
+        import page1
+def changepage_page2():
+    root.withdraw()
+    
+    import page2
+
+def changepage_page3():
+    root.withdraw()
+    
+    import page3
+ 
 
 
-class Page3(Page):
-   def __init__(self, *args, **kwargs):
-       Page.__init__(self, *args, **kwargs)
-       label = tk.Label(self, text="This is page 3")
-       label.pack(side="top", fill="both", expand=True)
-
-class MainView(tk.Frame):
-    def __init__(self, *args, **kwargs):
-        tk.Frame.__init__(self, *args, **kwargs)
-        p1 = Page1(self)
-        p2 = Page2(self)
-        p3 = Page3(self)
-
-        buttonframe = tk.Frame(self)
-        container = tk.Frame(self)
-        buttonframe.pack(side="top", fill="x", expand=False)
-        container.pack(side="top", fill="both", expand=True)
-
-        p1.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
-        p2.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
-        p3.place(in_=container, x=0, y=0, relwidth=1, relheight=1)
-
-        b1 = tk.Button(buttonframe, text="Page 1", command=p1.show)
-        b2 = tk.Button(buttonframe, text="Page 2", command=p2.show)
-        b3 = tk.Button(buttonframe, text="Page 3", command=p3.show)
-
-        b1.pack(side="left")
-        b2.pack(side="left")
-        b3.pack(side="left")
-
-        p1.show()
-
-
-if __name__ == "__main__":
-    root = tk.Tk()
-    root.title("Real Time Translator")
-    main = MainView(root)
-    main.pack(side="top", fill="both", expand=True)
-    root.wm_geometry("400x400")
-    root.mainloop()
+root.geometry("967x725")
+root.title("Real Time Translator")
+img = tk.PhotoImage(file="assets/images/dictionary2.png")
+label=tk.Label(root, image=img)
+label.place(x=0, y=0)
+label=tk.Label(root, text="", background="white",fg="black",font=("Arial", 15)).grid(row=1, column=1, pady=50)
+page1(root)
+root.mainloop()
