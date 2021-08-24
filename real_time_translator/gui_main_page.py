@@ -34,6 +34,7 @@ class MainPage(Page):
         BGlabel = tk.Label(self,image=logo)
         BGlabel.image = logo
         BGlabel.place(x=0,y=0,width=1000,height=714)
+        
 
 class Navigator(tk.Frame):
     def __init__(self, *args, **kwargs):
@@ -53,23 +54,24 @@ class Navigator(tk.Frame):
         buttonframe.pack(side="top", fill="x", expand=False)
         # container.pack(side="top", fill="both", expand=True)
 
-        pm.place(in_=BGlabel, x=0, y=30, relwidth=1, relheight=1)
-        p1.place(in_=BGlabel, x=0, y=30, relwidth=1, relheight=1)
-        p2.place(in_=BGlabel, x=0, y=30, relwidth=1, relheight=1)
-        p3.place(in_=BGlabel, x=0, y=30, relwidth=1, relheight=1)
+        pm.place(in_=BGlabel, x=10, y=80, relwidth=1, relheight=1)
+        p1.place(in_=BGlabel, x=10, y=80, relwidth=1, relheight=1)
+        p2.place(in_=BGlabel, x=10, y=80, relwidth=1, relheight=1)
+        p3.place(in_=BGlabel, x=10, y=80, relwidth=1, relheight=1)
 
-        bm = tk.Button(BGlabel, text="Main Page", command=pm.show)
-        b1 = tk.Button(BGlabel, text="Page 1", command=p1.show)
-        b2 = tk.Button(BGlabel, text="Page 2", command=p2.show)
-        b3 = tk.Button(BGlabel, text="Page 3", command=p3.show)
+        bm = tk.Button(BGlabel, text="Main Page", command=pm.show,fg="white",bg="black",font=("Arial", 15)).grid(row = 4,column=2, ipadx=38, ipady=20)
+        b1 = tk.Button(BGlabel, text="Translate a Voice", command=p1.show,fg="white",bg="black",font=("Arial", 15)).grid(row = 4,column=3, ipadx=38, ipady=20)
+        b2 = tk.Button(BGlabel, text="Translate a Text", command=p2.show,fg="white",bg="black",font=("Arial", 15)).grid(row = 4,column=4, ipadx=38, ipady=20)
+
+        b3 = tk.Button(BGlabel, text="Translate a File", command=p3.show,fg="white",bg="black",font=("Arial", 15)).grid(row = 4,column=5, ipadx=38, ipady=20)
 
        
 
-        bm.grid(row=2, column=1)
-        b1.grid(row=2, column=2)
-        b2.grid(row=2, column=3)
-        b3.grid(row=2, column=4)
-        # pm.show()
+        # bm.grid(row=2, column=1)
+        # b1.grid(row=2, column=2)
+        # b2.grid(row=2, column=3)
+        # b3.grid(row=2, column=4)
+        pm.show()
 
 
 

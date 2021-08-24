@@ -16,11 +16,11 @@ class Page1(Page):
         self.extracted_text=None
         self.edit_text=None
 
-        label = tk.Label(BGlabel, text="This is page 1")
-        label.grid(row=12,column=12)
+        # label = tk.Label(BGlabel, text="This is page 1",fg="white",bg="black",font=("Arial", 15))
+        # label.grid(row=1,column=1)
 
-        self.button_record=tk.Button(BGlabel,text="Start Recording",command=self.handle_record)
-        self.button_record.place(x=130,y=30)
+        self.button_record=tk.Button(BGlabel,text="Start Recording",command=self.handle_record,fg="white",bg="black",font=("Arial", 15)).grid(padx=(5, 20), pady=(200, 0))
+        # self.button_record.place(x=130,y=30, ipadx=38, ipady=20)
 
 
     def handle_record(self):
