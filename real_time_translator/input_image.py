@@ -1,8 +1,8 @@
 import pytesseract
 
 # This lines for Yahia because he is using pyCharm
-pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
-  
+# pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
+
 # adds image processing capabilities
 from PIL import Image   
 

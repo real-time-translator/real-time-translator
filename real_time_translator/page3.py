@@ -26,7 +26,7 @@ class Page3(Page):
         self.edit_box=Entry(self,textvariable=self.user_input)
         self.submit_button=Button(self,text="Submit ",command=self.ask_for_submit)
         self.edit_btn = tk.Button(self, text = 'Edit',command = self.ask_for_edit)
-        self.show_label = Label(text=self.extracted_text)
+        self.show_label = Label(self,text=self.extracted_text)
 
         self.image_btn = tk.Button(self,text ='Choose a picture',command = lambda:self.ask_for_image()) 
         self.image_btn.place(x=250,y = 120)
@@ -69,7 +69,7 @@ class Page3(Page):
         self.trans_btn = tk.Button(self, text = 'Translate',command = self.translate)
         self.trans_btn.place(x = 450, y= 250 )
 
-        self.show_label = Label(text=self.extracted_text)
+        self.show_label = Label(self,text=self.extracted_text)
         self.show_label.place(x=300,y = 200 ,height = 20,width = 450)
         print(self.extracted_text)
 
@@ -98,7 +98,7 @@ class Page3(Page):
 
         self.edit_btn = tk.Button(self, text = 'Edit',command = self.ask_for_edit)
         self.edit_btn.place(x = 800, y= 190 )
-        self.show_label = Label( text=self.extracted_text)
+        self.show_label = Label(self, text=self.extracted_text)
         self.show_label.place(x=300,y = 200 ,height = 20,width = 450)
         self.image_btn = tk.Button(self,text ='Choose a picture',command = lambda:self.ask_for_image()) 
         self.image_btn.place(x=250,y = 120)

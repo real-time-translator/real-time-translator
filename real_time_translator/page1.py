@@ -1,4 +1,6 @@
 import tkinter as tk
+from tkinter.constants import END, S
+from input_voice import transcript_from_record
 
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
@@ -10,6 +12,7 @@ class Page1(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
         logo = tk.PhotoImage(file="assets/images/dictionary2.2.png")
+        # logo = tk.PhotoImage(file=r"\\wsl$\Ubuntu\home\yahiaqous\asac\401\mid-project\real-time-translator\assets\images\dictionary2.2.png")
         BGlabel = tk.Label(self,image=logo)
         BGlabel.image = logo
         BGlabel.place(x=0,y=0,width=1000,height=714)
