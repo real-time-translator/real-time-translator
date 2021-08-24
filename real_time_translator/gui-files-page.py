@@ -65,13 +65,20 @@ def ask_for_audio():
 def show_answer(extracted_text):
     Input_text = Entry(root)
     text=Entry(root,  text = "%s" %(Input_text) )
+    # text  = Label(root, text=extracted_text)
+
     text.place(x=300,y = 160 ,height = 75,width = 450)
     text.insert(END,extracted_text)
+    print(extracted_text)
 
-def ask_for_edit(extracted_text):
-    edited_text = edit_text(extracted_text)
-    extracted_text = edited_text
-    show_answer(extracted_text)
+def ask_for_edit():
+    # extracted= Entry(root)
+    box=Entry(root,text=extracted_text)
+    box.insert(END,str(extracted_text))
+    box.place(x=300,y = 160 ,height = 75,width = 450)
+
+    # submit_button=Button(text=" Submit ",command=handle_submiting)
+    # submit_button.place(x=20,y=150)
 
 
 
@@ -101,8 +108,8 @@ msbtn = Button(root,text ='Choose an audio',command = lambda:ask_for_audio())
 msbtn.place(x=650,y = 120)
 
 
-# trans_btn = Button(root, text = 'Edit',command = ask_for_edit)
-# trans_btn.place(x = 800, y= 190 )
+trans_btn = Button(root, text = 'Edit',command = ask_for_edit)
+trans_btn.place(x = 800, y= 190 )
 
 # Input_text = Entry(root)
 # Input_text = Text(root, height = 5, wrap = WORD, padx=5, pady=5, width = 60)
