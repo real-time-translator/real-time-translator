@@ -2,7 +2,7 @@ import os
 from input_text import input_text_file
 from input_image import imagetotext
 from input_voice import transcript_from_file
-from edit_text import edit_text
+# from edit_text import edit_text
 from tkinter import *
 from tkinter.ttk import *
 from tkinter.filedialog import askopenfile ,askopenfilename
@@ -15,7 +15,9 @@ root.geometry('1050x400')
 root.resizable(0,0)
 root.config(bg = 'ghost white')
 root.title('Real-Time-Translator')
-extracted_text = ''
+
+extracted_text=None
+edit_text=None
 
 # def translate():
 #     # Initial
@@ -41,8 +43,8 @@ def ask_for_image():
     extracted_text = imagetotext(file_path.name)
     show_answer(extracted_text)
 
-
 def ask_for_text():
+    global extracted_text
     file_path = filedialog.askopenfile(   title="Choose a file",
     filetypes=[
                ('text files', '.txt'),
@@ -50,7 +52,6 @@ def ask_for_text():
     extracted_text = input_text_file(file_path.name)
     # print (extracted_text)
     show_answer(extracted_text)
-
 
 def ask_for_audio():
     file_path = filedialog.askopenfile(   title="Choose a file",
@@ -63,23 +64,33 @@ def ask_for_audio():
 
 
 def show_answer(extracted_text):
-    Input_text = Entry(root)
-    text=Entry(root,  text = "%s" %(Input_text) )
+    # Input_text = Entry(root)
+    # text=Entry(root,  text = "%s" %(Input_text) )
     # text  = Label(root, text=extracted_text)
+    label = Label(text=extracted_text)
+    label .place(x=300,y = 160 ,height = 75,width = 450)
 
-    text.place(x=300,y = 160 ,height = 75,width = 450)
-    text.insert(END,extracted_text)
+    # text.place(x=300,y = 160 ,height = 75,width = 450)
+    # text.insert(END,extracted_text)
     print(extracted_text)
 
 def ask_for_edit():
     # extracted= Entry(root)
-    box=Entry(root,text=extracted_text)
-    box.insert(END,str(extracted_text))
-    box.place(x=300,y = 160 ,height = 75,width = 450)
-
+    # box=Entry(root,text=extracted_text)
+    # box.insert(END,str(extracted_text))
+    # box.place(x=300,y = 160 ,height = 75,width = 450)
+    # user_input = StringVar()
+    global extracted_text
+    box=Entry(textvariable=extracted_text)
+    box.insert(END,extracted_text)
+    box.place(x=300,y = 200 ,height = 75,width = 450)
+    submit_button=Button(root,text="Submit ",command=ask_for_submit)
+    submit_button.place(x = 800, y= 190 )
     # submit_button=Button(text=" Submit ",command=handle_submiting)
     # submit_button.place(x=20,y=150)
 
+def ask_for_submit():
+    print('submit')
 
 
 #         Input_text = Entry(root)
