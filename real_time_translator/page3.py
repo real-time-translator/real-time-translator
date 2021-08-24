@@ -18,6 +18,7 @@ class Page(tk.Frame):
         self.lift()
 
 class Page3(Page):
+
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
         self.extracted_text=None
@@ -111,6 +112,7 @@ class Page3(Page):
         print(translated_text)
         label_translated = Label(self,text=translated_text)
         label_translated.place(x=300,y = 300, height = 75,width = 450)
+
 
 
 
