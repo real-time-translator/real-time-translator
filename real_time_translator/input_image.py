@@ -8,8 +8,11 @@ from PIL import Image
 def imagetotext(imageFileName):
     # opening an image from the source path
     img = Image.open(imageFileName)
+    # contents = open(imageFileName).read()
+    # with open(imageFileName, 'rb') as f:
+    #     f.read()
     # describes image format in the output
-    print(img)
+    # print(img)
     # converts the image to result and saves it into result variable
     result = pytesseract.image_to_string(imageFileName)
 
