@@ -4,9 +4,6 @@ from input_text import input_text_manually, input_text_file
 from input_image import imagetotext
 from input_voice import transcript_from_file, transcript_from_record
 # from edit_text import edit_text
-
-
-
 import tkinter as tk
 
 class Page(tk.Frame):
@@ -29,22 +26,14 @@ class Page1(Page):
        self.button_record=tk.Button(self,text="Start Recording",command=self.handle_record)
        self.button_record.place(x=130,y=30)
 
-
-     
-   
     def handle_record(self):
-
         try:
             self.box.destroy()
         except:
-                
             if not self.extracted_text: 
-
                 self.extracted_text=transcript_from_record()
                 self.label = tk.Label(self, text=self.extracted_text)
                 self.label .place(x=130,y=120)
-            
-
             else :
                 self.label .destroy()
                 self.extracted_text=transcript_from_record()
@@ -58,7 +47,6 @@ class Page1(Page):
 
 
     def handle_editing(self):
-
             self.user_input = tk.StringVar(self)
             self.box=tk.Entry(self,textvariable=self.user_input)
 
@@ -70,11 +58,6 @@ class Page1(Page):
 
             self.button_record=tk.Button(self,text="Start Recording",command=self.handle_record)
             self.button_record.place(x=130,y=30)
-
-            
-    
-        
-     
 
 
     def handle_submiting(self):
@@ -89,14 +72,12 @@ class Page1(Page):
 
 
     def handle_translation(self):
-
         try:
             self.label_translation.destroy()
             self.label_translation  = tk.Label(self, text=self.extracted_text)
             self.label_translation .place(x=130,y=200)
            
         except:
-
             self.label_translation  = tk.Label(self, text=self.extracted_text)
             self.label_translation .place(x=130,y=200)
             print('b')

@@ -3,10 +3,11 @@ def input_text_manually():
     return(user_input)
 
 def input_text_file(path):
+    print(path)
     user_input_text = open(path , 'r')
-    print(user_input_text.read())
-    return user_input_text.read()
+    # print(user_input_text.read())
+    return str(user_input_text.read())
 
-if __name__ == '__main__':
-    input_text_manually()
-    print(input_text_file())
+# if __name__ == '__main__':
+#     # input_text_manually()
+#     # print(input_text_file())
