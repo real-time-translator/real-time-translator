@@ -1,9 +1,8 @@
 import os
-from edit_text import edit_text
 from input_text import input_text_file
 from input_image import imagetotext
 from input_voice import transcript_from_file
-# from edit_text import edit_text
+from edit_text import edit_text
 from tkinter import *
 from tkinter.ttk import *
 from tkinter.filedialog import askopenfile ,askopenfilename
@@ -16,19 +15,19 @@ root.geometry('1050x400')
 root.resizable(0,0)
 root.config(bg = 'ghost white')
 root.title('Real-Time-Translator')
-
+extracted_text = ''
 
 # def translate():
 #     # Initial
 #     translator = googletrans.Translator()
 #     # Basic Translate
-#     translation = translator.translate( "sara", dest="ar")
-#     translated=f"{translation.origin} ({translation.src}) --> {translation.text} ({translation.dest})"
+#     translation = translator.translate("sara", dest="ar")
+#     translated = f"{translation.origin} ({translation.src}) --> {translation.text} ({translation.dest})"
 #     print(translated)
-
-#     # with open('abc.txt',mode ='w') as file:     
+#
+#     # with open('abc.txt',mode ='w') as file:
 #     #         file.write(translated)
-
+#
 #     return translated
 
 
@@ -65,25 +64,31 @@ def ask_for_audio():
 
 def show_answer(extracted_text):
     Input_text = Entry(root)
-
     text=Entry(root,  text = "%s" %(Input_text) )
     text.place(x=300,y = 160 ,height = 75,width = 450)
     text.insert(END,extracted_text)
 
 def ask_for_edit(extracted_text):
-        Input_text = Entry(root)
+    edited_text = edit_text(extracted_text)
+    extracted_text = edited_text
+    show_answer(extracted_text)
 
-        text=Entry(root,  text = "%s" %(Input_text) )
 
-        text.insert(END,extracted_text)
-        text.place(x=130,y=150)
 
-        submit_button=root.Button(text=" Submit ",command=handle_submiting)
-        submit_button.place(x=20,y=150)
+#         Input_text = Entry(root)
+#
+#         text=Entry(root,  text = "%s" %(Input_text) )
+#
+#         text.insert(END,extracted_text)
+#         text.place(x=130,y=150)
+#
+#         submit_button=root.Button(text=" Submit ",command=handle_submiting)
+#         submit_button.place(x=20,y=150)
+#
+#         button_record=root.Button(text="Start Recording",command=handle_record)
+#         button_record.place(x=130,y=30)
 
-        button_record=root.Button(text="Start Recording",command=handle_record)
-        button_record.place(x=130,y=30)
-
+    
             
 
 adharbtn = Button(root,text ='Choose a picture',command = lambda:ask_for_image()) 
@@ -96,8 +101,8 @@ msbtn = Button(root,text ='Choose an audio',command = lambda:ask_for_audio())
 msbtn.place(x=650,y = 120)
 
 
-trans_btn = Button(root, text = 'Edit',command = ask_for_edit) )
-trans_btn.place(x = 800, y= 190 )
+# trans_btn = Button(root, text = 'Edit',command = ask_for_edit)
+# trans_btn.place(x = 800, y= 190 )
 
 # Input_text = Entry(root)
 # Input_text = Text(root, height = 5, wrap = WORD, padx=5, pady=5, width = 60)
@@ -126,3 +131,4 @@ root.mainloop()
 # # button= Button(win, image=click_btn,command= my_command,
 # # borderwidth=0)
 # # button.pack(pady=30)
+

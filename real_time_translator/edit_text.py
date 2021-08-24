@@ -12,3 +12,4 @@ if __name__ == '__main__':
     old_text = "This is a test"
     edited_text = edit_text("", old_text)
     print(edited_text)
+

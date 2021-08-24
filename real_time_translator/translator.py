@@ -1,6 +1,5 @@
 import googletrans
 
-
 def translat_str(snetence,to_lang):
 
     # Initial
@@ -16,7 +15,5 @@ def translat_str(snetence,to_lang):
     return translated
 
 if __name__ == "__main__":
-  
-
     print(translat_str("تفاحة",'en').lower())
     pass
