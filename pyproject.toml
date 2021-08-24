@@ -15,6 +15,9 @@ audiomath = "^1.15.4"
 SpeechRecognition = "^3.8.1"
 translate = "^3.6.1"
 ffmpeg-python = "^0.2.0"
+matplotlib = "^3.4.3"
+telegram = "^0.0.1"
+python-telegram-bot = "^13.7"
 
 [tool.poetry.dev-dependencies]
 pytest = "^5.2"

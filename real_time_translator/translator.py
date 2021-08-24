@@ -1,7 +1,7 @@
 import googletrans
 
 
-def translat_str(snetence,to_lang):
+def translat_str(snetence,to_lang="ar"):
 
     # Initial
     translator = googletrans.Translator()
