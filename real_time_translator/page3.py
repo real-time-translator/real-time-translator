@@ -227,11 +227,11 @@ class Page3(Page):
         self.show_label = Label(self, text=self.extracted_text)
         self.show_label.place(x=300,y = 200 ,height = 20,width = 450)
         self.image_btn = tk.Button(self,text ='Choose a picture',command = lambda:self.ask_for_image(),fg="white",bg="black",font=("Arial", 15),width=15,height=1) 
-        self.image_btn.place(x=250,y = 120)
+        self.image_btn.place(x=250,y = 20)
         self.text_btn = tk.Button(self,text ='Choose a text ',command = lambda:self.ask_for_text(), fg="white",bg="black",font=("Arial", 15),width=15,height=1) 
-        self.text_btn.place(x=450,y = 120)
+        self.text_btn.place(x=450,y = 20)
         self.audio_btn = tk.Button(self,text ='Choose an audio',command = lambda:self.ask_for_audio(),fg="white",bg="black",font=("Arial", 15),width=15,height=1) 
-        self.audio_btn.place(x=650,y = 120)
+        self.audio_btn.place(x=650,y = 20)
         self.trans_btn = tk.Button(self, text = 'Translate',command = self.translate,fg="white",bg="black",font=("Arial", 15),width=15,height=1)
         self.trans_btn.place(x = 450, y= 250 )
         self.label_translated = Label(self,text=self.translation)
@@ -242,7 +242,7 @@ class Page3(Page):
         self.translation = translator.translate(self.extracted_text)
         print(self.translation)
         self.label_translated = Label(self,text=self.translation)
-        self.label_translated.place(x=300,y = 300, height = 75,width = 450)
+        self.label_translated.place(x=50,y = 370, height = 75,width = 350)
 
 
 # if __name__ == "__main__":
