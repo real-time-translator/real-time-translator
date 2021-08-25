@@ -15,7 +15,11 @@ from translate import Translator
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
-
+        logo = tk.PhotoImage(file="assets/images/dictionary2.2.png")
+        # logo = tk.PhotoImage(file=r"\\wsl$\Ubuntu\home\yahiaqous\asac\401\mid-project\real-time-translator\assets\images\dictionary2.2.png")
+        BGlabel = tk.Label(self,image=logo)
+        BGlabel.image = logo
+        BGlabel.place(x=0,y=0,width=1000,height=714)
     def show(self):
         self.lift()
 
@@ -150,12 +154,12 @@ class Page3(Page):
         self.edit_btn = tk.Button(self, text = 'Edit',command = self.ask_for_edit)
         self.show_label = Label(self,text=self.extracted_text)
         self.label_translated = tk.Label(self)
-        self.image_btn = tk.Button(self,text ='Choose a picture',command = lambda:self.ask_for_image()) 
-        self.image_btn.place(x=250,y = 120)
-        self.text_btn = tk.Button(self,text ='Choose a text ',command = lambda:self.ask_for_text()) 
-        self.text_btn.place(x=450,y = 120)
-        self.audio_btn = tk.Button(self,text ='Choose an audio',command = lambda:self.ask_for_audio()) 
-        self.audio_btn.place(x=650,y = 120)
+        self.image_btn = tk.Button(self,text ='Choose a picture',command = lambda:self.ask_for_image(), fg="white",bg="black",font=("Arial", 15),width=15,height=1).grid(row = 0, column = 2, padx = 25, pady = 10) 
+        # self.image_btn.place(x=250,y = 120)
+        self.text_btn = tk.Button(self,text ='Choose a text ',command = lambda:self.ask_for_text(), fg="white",bg="black",font=("Arial", 15),width=15,height=1).grid(row = 0, column = 4, padx = 25, pady = 10) 
+        # self.text_btn.place(x=450,y = 120)
+        self.audio_btn = tk.Button(self,text ='Choose an audio',command = lambda:self.ask_for_audio(),fg="white",bg="black",font=("Arial", 15),width=15,height=1).grid(row = 0, column = 6, padx = 25, pady = 10) 
+        # self.audio_btn.place(x=650,y = 120)
 
 
     def ask_for_image(self):
@@ -206,8 +210,8 @@ class Page3(Page):
 
         self.submit_button=Button(self,text="Submit ",command=self.ask_for_submit)
         self.submit_button.place(x = 800, y= 190 )
-        self.edit_box=Entry(self,textvariable=self.user_input)
-        self.edit_box.insert(END,self.extracted_text)
+        self.edit_box=Entry(self,textvariable=self.user_input,fg="white",bg="black",font=("Arial", 15))
+        self.edit_box.insert(END,self.extracted_text, fg="white")
         self.edit_box.place(x=300,y = 200 ,height = 20,width = 450)
 
     def ask_for_submit(self):
