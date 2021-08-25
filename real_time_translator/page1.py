@@ -1,5 +1,8 @@
 import tkinter as tk
-from tkinter.constants import END, S
+from tkinter import *
+from tkinter.ttk import *
+from translator import translat_str
+from translate import Translator
 from input_voice import transcript_from_record
 
 class Page(tk.Frame):
@@ -16,67 +19,206 @@ class Page1(Page):
         BGlabel = tk.Label(self,image=logo)
         BGlabel.image = logo
         BGlabel.place(x=0,y=0,width=1000,height=714)
+
         self.extracted_text=None
-        self.edit_text=None
+        self.user_input = StringVar()
+        self.edit_box=Entry(self,textvariable=self.user_input)
 
-        # label = tk.Label(BGlabel, text="This is page 1",fg="white",bg="black",font=("Arial", 15))
-        # label.grid(row=1,column=1)
+        self.choices = {  'Afrikaans',
+                        'Albanian',
+                        'Arabic',
+                        'English',
+                        'Armenian',
+                       ' Azerbaijani',
+                        'Basque',
+                        'Belarusian',
+                        'Bengali',
+                        'Bosnian',
+                        'Bulgarian',
+                       ' Catalan',
+                        'Cebuano',
+                        'Chichewa',
+                        'Chinese',
+                        'Corsican',
+                        'Croatian',
+                       ' Czech',
+                        'Danish',
+                        'Dutch', 
+                        'Esperanto',
+                        'Estonian',
+                        'Filipino',
+                        'Finnish',
+                        'French',
+                        'Frisian',
+                        'Galician',
+                        'Georgian',
+                        'German',
+                        'Greek',
+                        'Gujarati',
+                        # 'Haitian Creole',
+                        # 'Hausa',
+                        # 'Hawaiian',
+                        # 'Hebrew',
+                        # 'Hindi',
+                        # 'Hmong',
+                        # 'Hungarian',
+                        # 'Icelandic',
+                        # 'Igbo',
+                        # 'Indonesian',
+                        # 'Irish',
+                        # 'Italian',
+                        # 'Japanese',
+                        # 'Javanese',
+                        # 'Kannada',
+                        # 'Kazakh',
+                        # 'Khmer',
+                        # 'Kinyarwanda',
+                        # 'Korean',
+                        # 'Kurdish',
+                        # 'Kyrgyz',
+                        # 'Lao',
+                        # 'Latin',
+                        # 'Latvian',
+                        # 'Lithuanian',
+                        # 'Luxembourgish',
+                        # 'Macedonian',
+                        # 'Malagasy',
+                        # 'Malay',
+                        # 'Malayalam',
+                        # 'Maltese',
+                        # 'Maori',
+                        # 'Marathi',
+                        # 'Mongolian',
+                        # 'Myanmar',
+                        # 'Nepali',
+                        # 'Norwegian'
+                        # 'Odia',
+                        # 'Pashto',
+                        # 'Persian',
+                        # 'Polish',
+                        # 'Portuguese',
+                        # 'Punjabi',
+                        # 'Romanian',
+                        # 'Russian',
+                        # 'Samoan',
+                        # 'Scots Gaelic',
+                        # 'Serbian',
+                        # 'Sesotho',
+                        # 'Shona',
+                        # 'Sindhi',
+                        # 'Sinhala',
+                        # 'Slovak',
+                        # 'Slovenian',
+                        # 'Somali',
+                        # 'Spanish',
+                        # 'Sundanese',
+                        # 'Swahili',
+                        # 'Swedish',
+                        # 'Tajik',
+                        # 'Tamil',
+                        # 'Tatar',
+                        # 'Telugu',
+                        # 'Thai',
+                        # 'Turkish',
+                        # 'Turkmen',
+                        # 'Ukrainian',
+                        # 'Urdu',
+                        # 'Uyghur',
+                        # 'Uzbek',
+                        # 'Vietnamese',
+                        # 'Welsh',
+                        # 'Xhosa'
+                        # 'Yiddish',
+                        # 'Yoruba',
+                        'Zulu',}
 
-        self.button_record=tk.Button(BGlabel,text="Start Recording",command=self.handle_record,fg="white",bg="black",font=("Arial", 15)).grid(padx=(5, 20), pady=(200, 0))
-        # self.button_record.place(x=130,y=30, ipadx=38, ipady=20)
+        self.lan1 = StringVar()
+        self.lan2 = StringVar()
+        self.lan1.set('English')
+        self.lan2.set('Arabic')
+        self.lan1menu = OptionMenu(self, self.lan1, *self.choices)
+        self.label_lan1= tk.Label(self,text="Select a language").grid(row = 0, column = 1)
+        self.lan1menu.grid(row = 1, column =1)
+        self.lan2menu = OptionMenu( self, self.lan2, *self.choices)
+        self.label_lan2= tk.Label(self,text="Select a language").grid(row = 0, column = 2)
+        self.lan2menu.grid(row = 1, column =2)
 
+        self.submit_btn = Button(self,text="Submit ",command=self.ask_for_submit)
+        self.edit_btn = tk.Button(self, text = 'Edit',command = self.ask_for_edit)
+        self.trans_btn = tk.Button(self, text = 'Translate',command = self.translate)
 
-    def handle_record(self):
-        try:
-            self.box.destroy()
-        except:
-            if not self.extracted_text: 
-                self.extracted_text=transcript_from_record()
-                self.label = tk.Label(self, text=self.extracted_text)
-                self.label .place(x=130,y=120)
-            else :
-                self.label .destroy()
-                self.extracted_text=transcript_from_record()
-                self.label  = tk.Label(self, text=self.extracted_text)
-                self.label .place(x=130,y=120)
-                
-            edit_button=tk.Button(self,text="Edit Text",command=self.handle_editing)
-            edit_button.place(x=20,y=120)
-            translate_button=tk.Button(self,text="Translate",command=self.handle_translation)
-            translate_button.place(x=20,y=170)
+        self.show_label = Label(self,text=self.extracted_text)
+        self.label_translated = tk.Label(self)
 
-    def handle_editing(self):
-            self.user_input = tk.StringVar(self)
-            self.box=tk.Entry(self,textvariable=self.user_input)
+        self.record_btn=tk.Button(self,text="Start Recording",command=self.ask_for_record,fg="white",bg="black",font=("Arial", 15))
+        self.record_btn.place(x=650,y = 120)
 
-            self.box.insert(END,self.extracted_text)
-            self.box.place(x=130,y=150)
+    def ask_for_record(self):
+        self.extracted_text=transcript_from_record()
+        self.show_answer()
 
-            self.submit_button=tk.Button(self,text=" Submit ",command=self.handle_submiting)
-            self.submit_button.place(x=20,y=150)
+    def show_answer(self):
+        self.edit_btn.destroy()
+        self.show_label.destroy()
+        self.edit_box.destroy()
+        self.submit_btn.destroy()
+        self.trans_btn.destroy()
 
-            self.button_record=tk.Button(self,text="Start Recording",command=self.handle_record)
-            self.button_record.place(x=130,y=30)
+        self.edit_btn = tk.Button(self, text = 'Edit',command = self.ask_for_edit)
+        self.edit_btn.place(x = 800, y= 190 )
+        self.trans_btn = tk.Button(self, text = 'Translate',command = self.translate)
+        self.trans_btn.place(x = 450, y= 250 )
 
-    def handle_submiting(self):
-        self.extracted_text=self.user_input.get()
+        self.show_label = Label(self,text=self.extracted_text)
+        self.show_label.place(x=300,y = 200 ,height = 20,width = 450)
         print(self.extracted_text)
-        self.user_input.set("")
-        self.label .destroy()
-        self.label  = tk.Label(self, text=self.extracted_text)
-        self.label .place(x=130,y=120)
-        self.submit_button.destroy()
-        self.box.destroy()
 
-    def handle_translation(self):
-        try:
-            self.label_translation.destroy()
-            self.label_translation  = tk.Label(self, text=self.extracted_text)
-            self.label_translation .place(x=130,y=200)
-        except:
-            self.label_translation  = tk.Label(self, text=self.extracted_text)
-            self.label_translation .place(x=130,y=200)
-            print('b')
+    def ask_for_edit(self):
+        self.record_btn.destroy()
+        self.edit_btn.destroy()
+        self.show_label.destroy()
+        self.edit_box.destroy()
+        self.submit_btn.destroy()
+        self.trans_btn.destroy()
+        self.label_translated.destroy()
+
+        self.submit_btn=Button(self,text="Submit ",command=self.ask_for_submit)
+        self.submit_btn.place(x = 800, y= 190 )
+
+        self.edit_box=Entry(self,textvariable=self.user_input)
+        self.edit_box.insert(END,self.extracted_text)
+        self.edit_box.place(x=300,y = 200 ,height = 20,width = 450)
+
+    def ask_for_submit(self):
+        self.edit_box.destroy()
+        self.submit_btn.destroy()
+
+        self.record_btn=tk.Button(self,text="Start Recording",command=self.ask_for_record,fg="white",bg="black",font=("Arial", 15))
+        self.record_btn.place(x=650,y = 120)
+
+        self.extracted_text=self.user_input.get()
+        self.user_input.set("")
+        print(self.extracted_text)
+
+        self.edit_btn = tk.Button(self, text = 'Edit',command = self.ask_for_edit)
+        self.edit_btn.place(x = 800, y= 190 )
+        self.trans_btn = tk.Button(self, text = 'Translate',command = self.translate)
+        self.trans_btn.place(x = 450, y= 250 )
+
+        self.show_label = Label(self, text=self.extracted_text)
+        self.show_label.place(x=300,y = 200 ,height = 20,width = 450)
+        self.label_translated = Label(self,text=self.translation)
+        self.label_translated.place(x=300,y = 300, height = 75,width = 450)
+
+
+    def translate(self):
+        self.label_translated.destroy()
+        translator = Translator( from_lang=self.lan1.get(),to_lang=self.lan2.get())
+        self.translation = translator.translate(self.extracted_text)
+        print(self.translation)
+        self.label_translated = Label(self,text=self.translation)
+        self.label_translated.place(x=300,y = 300, height = 75,width = 450)
+
 
 # if __name__ == "__main__":
 #     root= tk.Tk()
