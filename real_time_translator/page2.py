@@ -1,14 +1,7 @@
 import tkinter as tk
 from tkinter import *
 from tkinter.ttk import *
-from tkinter.filedialog import askopenfile, askopenfilename
-from tkinter import filedialog
-import os
 from translator import translat_str
-
-from input_text import input_text_file
-from input_image import imagetotext
-from input_voice import transcript_from_file
 from translate import Translator
 
 class Page(tk.Frame):
@@ -145,7 +138,7 @@ class Page2(Page):
         self.lan2menu = OptionMenu( self, self.lan2, *self.choices)
         self.label_lan2= tk.Label(self,text="Select a language").grid(row = 0, column = 2)
         self.lan2menu.grid(row = 1, column =2)
-        
+
         self.trans_btn = tk.Button(self, text = 'Translate',command = self.translate)
         self.trans_btn.place(x = 450, y= 250 )
 
