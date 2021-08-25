@@ -1,5 +1,6 @@
 
 import tkinter as tk
+from tkinter.ttk import Label
 
 root = tk.Tk()
 
@@ -24,6 +25,16 @@ class MainPage(Page):
         BGlabel = tk.Label(self,image=logo)
         BGlabel.image = logo
         BGlabel.place(x=0,y=0,width=1000,height=714)
+       
+        photoshop = tk.Button(BGlabel, 
+                           text='Real Time Translator',
+                           fg = 'white',
+                      bg = 'black',
+                      bd =  0, 
+                       
+                      highlightcolor="black", 
+                      highlightbackground="black", 
+                      borderwidth=0, font=("Helvetica", 30)).place(x=515,y=310)
         
 
 class Navigator(tk.Frame):
@@ -70,7 +81,8 @@ if __name__ == "__main__":
     from page2 import Page2
     from page3 import Page3
     root.title("Real Time Translator")
-   
+    
+    
     main = Navigator(root)
     main.pack(side="top", fill="both", expand=True)
     root.wm_geometry("1000x714")
