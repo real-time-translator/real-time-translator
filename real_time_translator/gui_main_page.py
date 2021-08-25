@@ -6,8 +6,8 @@ root = tk.Tk()
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
-        # logo = tk.PhotoImage(file="assets/images/dictionary2.2.png")
-        logo = tk.PhotoImage(file=r"\\wsl$\Ubuntu\home\yahiaqous\asac\401\mid-project\real-time-translator\assets\images\dictionary2.2.png")
+        logo = tk.PhotoImage(file="assets/images/dictionary2.2.png")
+        # logo = tk.PhotoImage(file=r"\\wsl$\Ubuntu\home\yahiaqous\asac\401\mid-project\real-time-translator\assets\images\dictionary2.2.png")
         
         BGlabel = tk.Label(self,image=logo)
         BGlabel.image = logo
@@ -19,8 +19,8 @@ class Page(tk.Frame):
 class MainPage(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-        # logo = tk.PhotoImage(file="assets/images/dictionary2.2.png")
-        logo = tk.PhotoImage(file=r"\\wsl$\Ubuntu\home\yahiaqous\asac\401\mid-project\real-time-translator\assets\images\dictionary2.2.png")
+        logo = tk.PhotoImage(file="assets/images/dictionary2.2.png")
+        # logo = tk.PhotoImage(file=r"\\wsl$\Ubuntu\home\yahiaqous\asac\401\mid-project\real-time-translator\assets\images\dictionary2.2.png")
         BGlabel = tk.Label(self,image=logo)
         BGlabel.image = logo
         BGlabel.place(x=0,y=0,width=1000,height=714)
@@ -29,8 +29,8 @@ class MainPage(Page):
 class Navigator(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
-        # logo = tk.PhotoImage(file="assets/images/dictionary2.2.png")
-        logo = tk.PhotoImage(file=r"\\wsl$\Ubuntu\home\yahiaqous\asac\401\mid-project\real-time-translator\assets\images\dictionary2.2.png")
+        logo = tk.PhotoImage(file="assets/images/dictionary2.2.png")
+        # logo = tk.PhotoImage(file=r"\\wsl$\Ubuntu\home\yahiaqous\asac\401\mid-project\real-time-translator\assets\images\dictionary2.2.png")
         BGlabel = tk.Label(self,image=logo)
         BGlabel.image = logo
         BGlabel.place(x=0,y=0,width=1000,height=714)

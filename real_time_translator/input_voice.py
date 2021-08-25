@@ -34,12 +34,12 @@ def transcript_from_record():
   s = am.Record(3)
 
   # load audio to file
-  # s.Write('assets/voices/file.wav')
-  # file='assets/voices/file.wav'
+  s.Write('assets/voices/file.wav')
+  file='assets/voices/file.wav'
 
   # These two lines for Yahia because he is using pyCharm
-  s.Write(r'\\wsl$\Ubuntu\home\yahiaqous\asac\401\mid-project\real-time-translator\assets\voices\file.wav')
-  file=r'\\wsl$\Ubuntu\home\yahiaqous\asac\401\mid-project\real-time-translator\assets\voices\file.wav'
+  # s.Write(r'\\wsl$\Ubuntu\home\yahiaqous\asac\401\mid-project\real-time-translator\assets\voices\file.wav')
+  # file=r'\\wsl$\Ubuntu\home\yahiaqous\asac\401\mid-project\real-time-translator\assets\voices\file.wav'
 
   # Transcript form the File
   text=transcript_from_file(file)
