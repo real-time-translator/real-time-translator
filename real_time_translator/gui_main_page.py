@@ -34,6 +34,7 @@ class Navigator(tk.Frame):
         BGlabel = tk.Label(self,image=logo)
         BGlabel.image = logo
         BGlabel.place(x=0,y=0,width=1000,height=714)
+
         pm = MainPage(self)
         p1 = Page1(self)
         p2 = Page2(self)
@@ -49,7 +50,7 @@ class Navigator(tk.Frame):
         p2.place(in_=BGlabel, x=10, y=80, relwidth=1, relheight=1)
         p3.place(in_=BGlabel, x=10, y=80, relwidth=1, relheight=1)
 
-        bm = tk.Button(BGlabel, text="Main Page", command=pm.show,fg="white",bg="black",font=("Arial", 15),width=15,height=1).grid(row = 0, column = 2, padx = 25, pady = 10)
+        bm = tk.Button(BGlabel, text="Main Page", command=pm.show,fg="white",bg="black",font=("Arial", 15),width=15,height=1).grid(row = 0, column = 2, padx = 25, pady = 8)
         b1 = tk.Button(BGlabel, text="Translate a Voice", command=p1.show,fg="white",bg="black",font=("Arial", 15)).grid(row = 0, column = 3, padx = 25)
         b2 = tk.Button(BGlabel, text="Translate a Text", command=p2.show,fg="white",bg="black",font=("Arial", 15)).grid(row = 0, column = 4, padx = 25)
 
