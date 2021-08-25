@@ -14,7 +14,6 @@ class Page2(Page):
 
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
-
         self.extracted_text=None
         self.user_input = StringVar()
         self.text_entry=Entry(self,textvariable=self.user_input)
@@ -142,11 +141,15 @@ class Page2(Page):
         self.trans_btn = tk.Button(self, text = 'Translate',command = self.translate)
         self.trans_btn.place(x = 450, y= 250 )
 
+        self.show_label = Label(self,text=self.extracted_text)
+        self.label_translated = tk.Label(self)
+
 
     def translate(self):
         self.extracted_text=self.user_input.get()
         print(self.extracted_text)
 
+        self.label_translated.destroy()
         translator = Translator( from_lang=self.lan1.get(),to_lang=self.lan2.get())
         self.translation = translator.translate(self.extracted_text)
         print(self.translation)
