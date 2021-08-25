@@ -9,8 +9,9 @@ from translator import translat_str
 from input_text import input_text_file
 from input_image import imagetotext
 from input_voice import transcript_from_file
-from translate import Translator
-
+# from translate import Translator
+from googletrans import Translator
+from tkinter import messagebox
 
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
@@ -24,136 +25,125 @@ class Page(tk.Frame):
         self.lift()
 
 class Page3(Page):
-
-
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
         self.extracted_text=None
         self.user_input = StringVar()
         self.edit_box=Entry(self,textvariable=self.user_input)
-
-        self.choices = {  'Afrikaans',
-                        'Albanian',
-                        'Arabic',
-                        'English',
-                        'Armenian',
-                       ' Azerbaijani',
-                        'Basque',
-                        'Belarusian',
-                        'Bengali',
-                        'Bosnian',
-                        'Bulgarian',
-                       ' Catalan',
-                        'Cebuano',
-                        'Chichewa',
-                        'Chinese',
-                        'Corsican',
-                        'Croatian',
-                       ' Czech',
-                        'Danish',
-                        'Dutch', 
-                        'Esperanto',
-                        'Estonian',
-                        'Filipino',
-                        'Finnish',
-                        'French',
-                        'Frisian',
-                        'Galician',
-                        'Georgian',
-                        'German',
-                        'Greek',
-                        'Gujarati',
-                        # 'Haitian Creole',
-                        # 'Hausa',
-                        # 'Hawaiian',
-                        # 'Hebrew',
-                        # 'Hindi',
-                        # 'Hmong',
-                        # 'Hungarian',
-                        # 'Icelandic',
-                        # 'Igbo',
-                        # 'Indonesian',
-                        # 'Irish',
-                        # 'Italian',
-                        # 'Japanese',
-                        # 'Javanese',
-                        # 'Kannada',
-                        # 'Kazakh',
-                        # 'Khmer',
-                        # 'Kinyarwanda',
-                        # 'Korean',
-                        # 'Kurdish',
-                        # 'Kyrgyz',
-                        # 'Lao',
-                        # 'Latin',
-                        # 'Latvian',
-                        # 'Lithuanian',
-                        # 'Luxembourgish',
-                        # 'Macedonian',
-                        # 'Malagasy',
-                        # 'Malay',
-                        # 'Malayalam',
-                        # 'Maltese',
-                        # 'Maori',
-                        # 'Marathi',
-                        # 'Mongolian',
-                        # 'Myanmar',
-                        # 'Nepali',
-                        # 'Norwegian'
-                        # 'Odia',
-                        # 'Pashto',
-                        # 'Persian',
-                        # 'Polish',
-                        # 'Portuguese',
-                        # 'Punjabi',
-                        # 'Romanian',
-                        # 'Russian',
-                        # 'Samoan',
-                        # 'Scots Gaelic',
-                        # 'Serbian',
-                        # 'Sesotho',
-                        # 'Shona',
-                        # 'Sindhi',
-                        # 'Sinhala',
-                        # 'Slovak',
-                        # 'Slovenian',
-                        # 'Somali',
-                        # 'Spanish',
-                        # 'Sundanese',
-                        # 'Swahili',
-                        # 'Swedish',
-                        # 'Tajik',
-                        # 'Tamil',
-                        # 'Tatar',
-                        # 'Telugu',
-                        # 'Thai',
-                        # 'Turkish',
-                        # 'Turkmen',
-                        # 'Ukrainian',
-                        # 'Urdu',
-                        # 'Uyghur',
-                        # 'Uzbek',
-                        # 'Vietnamese',
-                        # 'Welsh',
-                        # 'Xhosa'
-                        # 'Yiddish',
-                        # 'Yoruba',
-                        'Zulu',}
-
-        self.lan1 = StringVar()
-        self.lan2 = StringVar()
-        self.lan1.set('English')
-        self.lan2.set('Arabic')
-        self.lan1menu = OptionMenu(self, self.lan1, *self.choices)
-        self.lan1menu["menu"].config(fg="white",bg="black",font=("Arial", 15))
-        self.lan1menu.pack()
-        self.label_lan1= tk.Label(self,text="Select a languages",fg="white",bg="black",font=("Arial", 15)).place(x= 300, y=110)
-        self.lan1menu.place(x= 330, y=150)
-        self.lan2menu = OptionMenu( self, self.lan2, *self.choices)
-        self.lan2menu["menu"].config(fg="white",bg="black",font=("Arial", 15))
-        self.lan2menu.pack()
-        self.label_lan2= tk.Label(self,text="Select a language",fg="white",bg="black",font=("Arial", 15)).place(x= 600, y=110)
-        self.lan2menu.place(x= 630, y=150)
+        
+        self.selected_language = tk.StringVar() 
+        self.languages_menu = Combobox(self, width = 20, textvariable = self.selected_language, state='readonly',font=("Arial", 15)) 
+        self.languages_menu['values'] = (
+                                'Afrikaans',
+                                'Albanian',
+                                'Arabic',
+                                'Armenian',
+                            ' Azerbaijani',
+                                'Basque',
+                                'Belarusian',
+                                'Bengali',
+                                'Bosnian',
+                                'Bulgarian',
+                            ' Catalan',
+                                'Cebuano',
+                                'Chichewa',
+                                'Chinese',
+                                'Corsican',
+                                'Croatian',
+                            ' Czech',
+                                'Danish',
+                                'Dutch',
+                                'English',
+                                'Esperanto',
+                                'Estonian',
+                                'Filipino',
+                                'Finnish',
+                                'French',
+                                'Frisian',
+                                'Galician',
+                                'Georgian',
+                                'German',
+                                'Greek',
+                                'Gujarati',
+                                'Haitian Creole',
+                                'Hausa',
+                                'Hawaiian',
+                                'Hebrew',
+                                'Hindi',
+                                'Hmong',
+                                'Hungarian',
+                                'Icelandic',
+                                'Igbo',
+                                'Indonesian',
+                                'Irish',
+                                'Italian',
+                                'Japanese',
+                                'Javanese',
+                                'Kannada',
+                                'Kazakh',
+                                'Khmer',
+                                'Kinyarwanda',
+                                'Korean',
+                                'Kurdish',
+                                'Kyrgyz',
+                                'Lao',
+                                'Latin',
+                                'Latvian',
+                                'Lithuanian',
+                                'Luxembourgish',
+                                'Macedonian',
+                                'Malagasy',
+                                'Malay',
+                                'Malayalam',
+                                'Maltese',
+                                'Maori',
+                                'Marathi',
+                                'Mongolian',
+                                'Myanmar',
+                                'Nepali',
+                                'Norwegian'
+                                'Odia',
+                                'Pashto',
+                                'Persian',
+                                'Polish',
+                                'Portuguese',
+                                'Punjabi',
+                                'Romanian',
+                                'Russian',
+                                'Samoan',
+                                'Scots Gaelic',
+                                'Serbian',
+                                'Sesotho',
+                                'Shona',
+                                'Sindhi',
+                                'Sinhala',
+                                'Slovak',
+                                'Slovenian',
+                                'Somali',
+                                'Spanish',
+                                'Sundanese',
+                                'Swahili',
+                                'Swedish',
+                                'Tajik',
+                                'Tamil',
+                                'Tatar',
+                                'Telugu',
+                                'Thai',
+                                'Turkish',
+                                'Turkmen',
+                                'Ukrainian',
+                                'Urdu',
+                                'Uyghur',
+                                'Uzbek',
+                                'Vietnamese',
+                                'Welsh',
+                                'Xhosa'
+                                'Yiddish',
+                                'Yoruba',
+                                'Zulu',
+                                ) 
+        self.languages_menu.place(x= 405, y=150)
+        self.languages_menu.current(0) 
 
         self.submit_button = Button(self,text="Submit ",command=self.ask_for_submit)
         self.edit_btn = tk.Button(self, text = 'Edit',command = self.ask_for_edit)
@@ -254,13 +244,12 @@ class Page3(Page):
 
     def translate(self):
         self.label_translated.destroy()
-        translator = Translator( from_lang=self.lan1.get(),to_lang=self.lan2.get())
-        self.translation = translator.translate(self.extracted_text)
+        translator = Translator()
+        self.translation = translator.translate(self.extracted_text, self.selected_language.get()).text
         print(self.translation)
         self.label_translated = Label(self,text=self.translation)
         self.label_translated.place(x=50,y = 370, height = 75,width = 350)
-
-
+        
 # if __name__ == "__main__":
 #     root= tk.Tk()
 #     root.mainloop()
