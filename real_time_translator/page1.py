@@ -137,19 +137,15 @@ class Page1(Page):
         self.lan1.set('English')
         self.lan2.set('Arabic')
         self.lan1menu = OptionMenu(self, self.lan1, *self.choices)
-        self.lan1menu["menu"].config(fg="white",bg="black",font=("Arial", 15))
-        self.lan1menu.pack()
-        self.label_lan1= tk.Label(self,text="Select a language",fg="white",bg="black",font=("Arial", 15)).place(x= 260, y=20)
-        self.lan1menu.place(x= 300, y=70)
+        self.label_lan1= tk.Label(self,text="Select a language").grid(row = 0, column = 1)
+        self.lan1menu.grid(row = 1, column =1)
         self.lan2menu = OptionMenu( self, self.lan2, *self.choices)
-        self.lan2menu["menu"].config(fg="white",bg="black",font=("Arial", 15))
-        self.lan2menu.pack()
-        self.label_lan2= tk.Label(self,text="Select a language",fg="white",bg="black",font=("Arial", 15)).place(x= 500, y=20)
-        self.lan2menu.place(x= 550, y=70)
+        self.label_lan2= tk.Label(self,text="Select a language").grid(row = 0, column = 2)
+        self.lan2menu.grid(row = 1, column =2)
 
         self.submit_btn = Button(self,text="Submit ",command=self.ask_for_submit)
-        self.edit_btn = tk.Button(self, text = 'Edit',command = self.ask_for_edit , fg="white",bg="black",font=("Arial", 15),width=15,height=1)
-        self.trans_btn = tk.Button(self, text = 'Translate',command = self.translate , fg="white",bg="black",font=("Arial", 15),width=15,height=1)
+        self.edit_btn = tk.Button(self, text = 'Edit',command = self.ask_for_edit)
+        self.trans_btn = tk.Button(self, text = 'Translate',command = self.translate)
 
         self.show_label = Label(self,text=self.extracted_text)
         self.label_translated = tk.Label(self)
@@ -168,13 +164,13 @@ class Page1(Page):
         self.submit_btn.destroy()
         self.trans_btn.destroy()
 
-        self.edit_btn = tk.Button(self, text = 'Edit',command = self.ask_for_edit, fg="white",bg="black",font=("Arial", 15),width=15,height=1)
+        self.edit_btn = tk.Button(self, text = 'Edit',command = self.ask_for_edit)
         self.edit_btn.place(x = 800, y= 190 )
-        self.trans_btn = tk.Button(self, text = 'Translate',command = self.translate, fg="white",bg="black",font=("Arial", 15),width=15,height=1)
+        self.trans_btn = tk.Button(self, text = 'Translate',command = self.translate)
         self.trans_btn.place(x = 450, y= 250 )
 
         self.show_label = Label(self,text=self.extracted_text)
-        self.show_label.place(x=250,y = 200 ,height = 20,width = 450)
+        self.show_label.place(x=300,y = 200 ,height = 20,width = 450)
         print(self.extracted_text)
 
     def ask_for_edit(self):
@@ -187,11 +183,11 @@ class Page1(Page):
         self.label_translated.destroy()
 
         self.submit_btn=Button(self,text="Submit ",command=self.ask_for_submit)
-        self.submit_btn.place(x = 800, y= 200 )
+        self.submit_btn.place(x = 800, y= 190 )
 
         self.edit_box=Entry(self,textvariable=self.user_input)
         self.edit_box.insert(END,self.extracted_text)
-        self.edit_box.place(x=250,y = 200 ,height = 20,width = 450)
+        self.edit_box.place(x=300,y = 200 ,height = 20,width = 450)
 
     def ask_for_submit(self):
         self.edit_box.destroy()
@@ -204,13 +200,13 @@ class Page1(Page):
         self.user_input.set("")
         print(self.extracted_text)
 
-        self.edit_btn = tk.Button(self, text = 'Edit',command = self.ask_for_edit, fg="white",bg="black",font=("Arial", 15),width=15,height=1)
+        self.edit_btn = tk.Button(self, text = 'Edit',command = self.ask_for_edit)
         self.edit_btn.place(x = 800, y= 190 )
-        self.trans_btn = tk.Button(self, text = 'Translate',command = self.translate,fg="white",bg="black",font=("Arial", 15),width=15,height=1)
+        self.trans_btn = tk.Button(self, text = 'Translate',command = self.translate)
         self.trans_btn.place(x = 450, y= 250 )
 
         self.show_label = Label(self, text=self.extracted_text)
-        self.show_label.place(x=250,y = 200 ,height = 20,width = 450)
+        self.show_label.place(x=300,y = 200 ,height = 20,width = 450)
         self.label_translated = Label(self,text=self.translation)
         self.label_translated.place(x=300,y = 300, height = 75,width = 450)
 
@@ -221,7 +217,7 @@ class Page1(Page):
         self.translation = translator.translate(self.extracted_text)
         print(self.translation)
         self.label_translated = Label(self,text=self.translation)
-        self.label_translated.place(x=50,y = 370, height = 75,width = 350)
+        self.label_translated.place(x=300,y = 300, height = 75,width = 450)
 
 
 # if __name__ == "__main__":
