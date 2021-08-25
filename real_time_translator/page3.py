@@ -10,6 +10,8 @@ from input_text import input_text_file
 from input_image import imagetotext
 from input_voice import transcript_from_file
 from translate import Translator
+
+
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
@@ -18,6 +20,7 @@ class Page(tk.Frame):
         self.lift()
 
 class Page3(Page):
+
 
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
