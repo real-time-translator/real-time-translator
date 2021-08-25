@@ -7,6 +7,11 @@ from translate import Translator
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
         tk.Frame.__init__(self, *args, **kwargs)
+        logo = tk.PhotoImage(file="assets/images/dictionary2.2.png")
+        # logo = tk.PhotoImage(file=r"\\wsl$\Ubuntu\home\yahiaqous\asac\401\mid-project\real-time-translator\assets\images\dictionary2.2.png")
+        BGlabel = tk.Label(self,image=logo)
+        BGlabel.image = logo
+        BGlabel.place(x=0,y=0,width=1000,height=714)
     def show(self):
         self.lift()
 
@@ -132,13 +137,17 @@ class Page2(Page):
         self.lan1.set('English')
         self.lan2.set('Arabic')
         self.lan1menu = OptionMenu(self, self.lan1, *self.choices)
-        self.label_lan1= tk.Label(self,text="Select a language").grid(row = 0, column = 1)
-        self.lan1menu.grid(row = 1, column =1)
+        self.lan1menu["menu"].config(fg="white",bg="black",font=("Arial", 15))
+        self.lan1menu.pack()
+        self.label_lan1= tk.Label(self,text="Select a languages",fg="white",bg="black",font=("Arial", 15)).place(x= 320, y=70)
+        self.lan1menu.place(x= 360, y=100)
         self.lan2menu = OptionMenu( self, self.lan2, *self.choices)
-        self.label_lan2= tk.Label(self,text="Select a language").grid(row = 0, column = 2)
-        self.lan2menu.grid(row = 1, column =2)
+        self.lan2menu["menu"].config(fg="white",bg="black",font=("Arial", 15))
+        self.lan2menu.pack()
+        self.label_lan2= tk.Label(self,text="Select a language",fg="white",bg="black",font=("Arial", 15)).place(x= 550, y=70)
+        self.lan2menu.place(x= 580, y=100)
 
-        self.trans_btn = tk.Button(self, text = 'Translate',command = self.translate)
+        self.trans_btn = tk.Button(self, text = 'Translate',command = self.translate,fg="white",bg="black",font=("Arial", 15))
         self.trans_btn.place(x = 450, y= 250 )
 
         self.show_label = Label(self,text=self.extracted_text)
