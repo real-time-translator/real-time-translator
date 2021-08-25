@@ -13,7 +13,10 @@ def imagetotext(imageFileName):
     # converts the image to result and saves it into result variable
     result = pytesseract.image_to_string(imageFileName)
 
-    return result
+    # write text in a text file and save it to source path
+    # with open('abc.txt',mode ='w') as file:
+    #     file.write(result)
+    return str(result)
 
 if __name__ == "__main__":
     imageFileName = input("enter the name of the image file: ")
