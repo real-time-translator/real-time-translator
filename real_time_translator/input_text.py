@@ -1,12 +1,11 @@
 def input_text_manually():
-    user_input = input('Type Your Text') #Change input to GUI
+    user_input = input('Type Your Text')
 
     return(user_input)
 
 def input_text_file(path):
     print(path)
     user_input_text = open(path , 'r')
-    # print(user_input_text.read())
     return str(user_input_text.read())
 
 # if __name__ == '__main__':

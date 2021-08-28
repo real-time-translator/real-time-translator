@@ -3,7 +3,7 @@ import readline
 def edit_text(extracted_text, prefill=''):
    readline.set_startup_hook(lambda: readline.insert_text(prefill))
    try:
-      return input(extracted_text) #Input gonna change to GUI
+      return input(extracted_text)
    finally:
       readline.set_startup_hook()
 

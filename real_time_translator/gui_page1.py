@@ -1,11 +1,8 @@
 import tkinter as tk
 from tkinter import *
 from tkinter.ttk import *
-from translator import translat_str
-# from translate import Translator
 from input_voice import transcript_from_record
 from googletrans import Translator 
-from tkinter import messagebox
 
 class Page(tk.Frame):
     def __init__(self, *args, **kwargs):
@@ -16,8 +13,11 @@ class Page(tk.Frame):
 class Page1(Page):
     def __init__(self, *args, **kwargs):
         Page.__init__(self, *args, **kwargs)
+        
         logo = tk.PhotoImage(file="assets/images/dictionary2.2.png")
+        # The line bellow if you are using pyCharm, but you need to change the path
         # logo = tk.PhotoImage(file=r"\\wsl$\Ubuntu\home\yahiaqous\asac\401\mid-project\real-time-translator\assets\images\dictionary2.2.png")
+
         BGlabel = tk.Label(self,image=logo)
         BGlabel.image = logo
         BGlabel.place(x=0,y=0,width=1000,height=714)
