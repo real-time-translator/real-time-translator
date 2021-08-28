@@ -1,5 +1,5 @@
 from warnings import filters
-from telegram import update
+from telegram import updatez
 from real_time_translator.translator import *
 from real_time_translator.input_voice import transcript_from_file
 from real_time_translator.input_image import imagetotext
@@ -13,7 +13,7 @@ logging.basicConfig(format='%(asctime)s - %(name)s - %(levelname)s - %(message)s
                      level=logging.INFO)
 
 
-updater = Updater(token='1931148200:AAGK0N9WLdxD34WT71o2WIStSvQ2NW38LWU', use_context=True)
+updater = Updater(token='1931148200:AAFHmAmex9bn9BiwCshTyjBXWNGLUI9W5NM', use_context=True)
 dispatcher = updater.dispatcher
 
 def start(update, context):
@@ -90,7 +90,10 @@ def image(update,context):
         context.bot.getFile(file_id=update.message.photo[-1].file_id).download(out=f)
 
     # Deliver the translated massage
+    context.bot.send_message(chat_id=update.effective_chat.id, text='Your Request under processing ')
     context.bot.send_message(chat_id=update.effective_chat.id, text=translat_str(imagetotext('assets/images/file_0.jpg'),to_lang))
+    context.bot.send_message(chat_id=update.effective_chat.id, text='Done ')
+
   
 def recording(update,context):
     print("inside record")
