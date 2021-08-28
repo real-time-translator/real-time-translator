@@ -127,13 +127,13 @@ class Page2(Page):
                         # 'Yoruba',
                         'Zulu',}
 
-        self.lan1 = StringVar()
+        # self.lan1 = StringVar()
         self.lan2 = StringVar()
-        self.lan1.set('English')
-        self.lan2.set('Arabic')
-        self.lan1menu = OptionMenu(self, self.lan1, *self.choices)
-        self.label_lan1= tk.Label(self,text="Select a language").grid(row = 0, column = 1)
-        self.lan1menu.grid(row = 1, column =1)
+        # self.lan1.set('English')
+        # self.lan2.set('Arabic')
+        # self.lan1menu = OptionMenu(self, self.lan1, *self.choices)
+        # self.label_lan1= tk.Label(self,text="Select a language").grid(row = 0, column = 1)
+        # self.lan1menu.grid(row = 1, column =1)
         self.lan2menu = OptionMenu( self, self.lan2, *self.choices)
         self.label_lan2= tk.Label(self,text="Select a language").grid(row = 0, column = 2)
         self.lan2menu.grid(row = 1, column =2)
@@ -150,7 +150,7 @@ class Page2(Page):
         print(self.extracted_text)
 
         self.label_translated.destroy()
-        translator = Translator( from_lang=self.lan1.get(),to_lang=self.lan2.get())
+        translator = Translator(to_lang=self.lan2.get())
         self.translation = translator.translate(self.extracted_text)
         print(self.translation)
         self.label_translated = Label(self,text=self.translation)

@@ -7,7 +7,7 @@ def translat_str(snetence,to_lang="ar"):
     translator = googletrans.Translator()
     # Basic Translate
     translation = translator.translate( snetence, dest=to_lang)
-    translated=f"{translation.origin} ({translation.src}) --> {translation.text} ({translation.dest})"
+    translated=f"{translation.text}"
     
     # print(translated)
     # with open('abc.txt',mode ='w') as file:     
