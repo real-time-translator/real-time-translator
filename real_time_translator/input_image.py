@@ -1,6 +1,6 @@
 import pytesseract
 
-# This lines for Yahia because he is using pyCharm
+# The line bellow if you are using pyCharm, but you need to install tesseract and change the path
 # pytesseract.pytesseract.tesseract_cmd = r'C:\Program Files\Tesseract-OCR\tesseract.exe'
 
 # adds image processing capabilities
@@ -13,7 +13,7 @@ def imagetotext(imageFileName):
     # converts the image to result and saves it into result variable
     result = pytesseract.image_to_string(imageFileName)
 
-    return result
+    return str(result)
 
 if __name__ == "__main__":
     imageFileName = input("enter the name of the image file: ")
