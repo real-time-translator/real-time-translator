@@ -141,3 +141,15 @@ As a user, I want to translate the text in the image I insert.
 ## Domain Modeling
 
 ![Domain](assets/images/Real-Time-Translator-Domain.jpg)
+
+&nbsp;
+
+## How To Use
+
+### #1 Clone the project repo on your local machine by type '**git clone git@github.com:real-time-translator/real-time-translator.git**'.
+
+### #2 Install dependencies used in project by type '**poetry install**'.
+
+### #3 Run the gui_main_page model by type '**pytest3 -m real_time_translator.gui_main_page**'.
+
+### #4 When the GUI start running you can choose the way you want to translate from.

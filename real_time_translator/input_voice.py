@@ -1,9 +1,5 @@
-from typing import Text
 import speech_recognition as sr
 import audiomath as am
-import ffmpeg
-import subprocess
-import os
 from pydub import AudioSegment
 
 r = sr.Recognizer()
@@ -34,44 +30,20 @@ def transcript_from_record():
   s.Write('assets/voices/file.wav')
   file='assets/voices/file.wav'
 
-  # These two lines for Yahia because he is using pyCharm
+  # The two lines bellow if you are using pyCharm, but you need to change the path
   # s.Write(r'\\wsl$\Ubuntu\home\yahiaqous\asac\401\mid-project\real-time-translator\assets\voices\file.wav')
   # file=r'\\wsl$\Ubuntu\home\yahiaqous\asac\401\mid-project\real-time-translator\assets\voices\file.wav'
+
 
   # Transcript form the File
   text=transcript_from_file(file)
   return(text)
 
 
-# def converter(src):
-#   if src.endswith('.mp3'):
-#     try:
-#       dst= 'assets/voices/file_converted.wav'
-#       sound = AudioSegment.from_mp3(src)
-#       sound.export(dst, format="wav")
-#       return dst
-#     except:
-#       print('Has Not converted ')
-
-#   if src.endswith('.oga'):
-#     try:
-#       print('ok')
-#       dst= 'assets/voices/file_converted.wav'
-#       sound = AudioSegment.from_ogg(src)
-#       sound.export(dst, format="wav")
-#       return dst
-#     except:
-#       print('Has Not converted ')
-
-
 def converterII(src):
   sound = AudioSegment.from_file(src)
   sound.export("assets/voices/file.wav", format="wav", bitrate="128k")
   return "assets/voices/file.wav"
-
-
-
-
 
 if __name__ == '__main__':
   # file='source/audio_files_harvard.wav'
