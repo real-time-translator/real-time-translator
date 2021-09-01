@@ -60,9 +60,9 @@ class Navigator(tk.Frame):
 
 
 if __name__ == "__main__":
-    from gui_page1 import Page1
-    from gui_page2 import Page2
-    from gui_page3 import Page3
+    from gui_page_input_voice import Page1
+    from gui_page_input_text import Page2
+    from gui_page_input_file import Page3
     root.title("Real Time Translator")
     
     main = Navigator(root)
